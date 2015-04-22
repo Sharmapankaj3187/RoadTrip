@@ -1,0 +1,13 @@
+{
+  "name": "dropbox",
+  "version": "0.10.3",
+  "main": "dropbox.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
