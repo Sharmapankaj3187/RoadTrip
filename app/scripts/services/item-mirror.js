@@ -102,7 +102,7 @@ angular.module('itemMirrorAngularDemoApp')
       var dropboxXooMLUtility;
       var dropboxItemUtility;
       var mirrorSyncUtility;
-      var rootGroupingItemURI = '/';
+      var rootGroupingItemURI = '/INFX 598 E,F, app ideas/Road Trip';
 
       dropboxXooMLUtility = {
         fragmentURI: '/XooML2.xml',
