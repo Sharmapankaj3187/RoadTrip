@@ -6,7 +6,11 @@
 
   <button ng-click="previous()" class="btn btn-default btn-lg">Back</button>
 
-    <div class="scroll">
+<!--<ul ui-sortable ng-model="associations">
+  <li ng-repeat="assoc in associations">{{ matchFirstLn(assoc.displayText) }}</li>
+</ul>-->
+
+    <div ui-sortable ng-model="associations" class="scroll">
       <div ng-repeat="assoc in associations | filter:search.displayText"
            ng-click="select(assoc)">
         <div class="association"
@@ -22,15 +26,17 @@
               <h3>{{ matchFirstLn(assoc.displayText) }}</h3>
               <a ng-show="assoc.isPhantom" ng-href="{{assoc.associatedItem}}">{{ assoc.associatedItem }}</a>
             </div>
-          </div> <!-- row -->
+          </div> 
+
+          <!-- row -->
           <div class="row buttons" ng-show="assoc.selected">
             <!-- Buttons -->
-            <div class="col-md-6">
+           <div class="col-md-6">
               <button class="btn btn-default" ng-click="navigate(assoc.guid)" ng-show="assoc.isGrouping">Enter</button>
             </div>
             <div class="col-md-6">
               <button ng-click="deleteAssoc(assoc.guid)" class="pull-right btn btn-danger">DELETE</button>
-            </div>
+            </div>   
           </div>
         </div>
       </div>

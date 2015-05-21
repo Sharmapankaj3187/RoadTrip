@@ -8,15 +8,15 @@
  *
  * Main module of the application.
  */
-angular
-  .module('itemMirrorAngularDemoApp', [
+angular.module('itemMirrorAngularDemoApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'mgcrea.ngStrap'
+    'mgcrea.ngStrap',
+    'ui.sortable'
   ])
   .config(function ($routeProvider) {
     $routeProvider

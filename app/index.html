@@ -15,6 +15,8 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+
   </head>
   <body ng-app="itemMirrorAngularDemoApp">
     <!--[if lt IE 7]>
@@ -43,12 +45,16 @@
        ga('send', 'pageview');
     </script>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
     <!-- endbuild -->
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -63,16 +69,21 @@
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
     <script src="bower_components/item-mirror/item-mirror.js"></script>
     <script src="bower_components/dropbox-build/dropbox.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.3/sortable.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.3/sortable.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/item-mirror.js"></script>
         <script src="scripts/services/dropbox-auth.js"></script>
         <script src="scripts/controllers/explorer.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>

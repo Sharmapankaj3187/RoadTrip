@@ -62,6 +62,8 @@ angular.module('itemMirrorAngularDemoApp')
         get customColor(){ return mirror.getAssociationNamespaceAttribute('color', guid, 'im-angular-demo'); },
         set customColor(color){ mirror.setAssociationNamespaceAttribute('color', color, guid, 'im-angular-demo'); },
 
+
+
         // These functions are all dealing with the private variable tags. This gives us a way to add,
         // delete, and list tags with an attribute. Internally these are represented as JSON and then these
         // methods are given to the associations to allow for easy manipulation as a directive.
