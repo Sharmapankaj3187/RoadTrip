@@ -60,9 +60,12 @@ angular.module('itemMirrorAngularDemoApp')
 
         // Simple plain text attribute that stores a color for a given association
         get customColor(){ return mirror.getAssociationNamespaceAttribute('color', guid, 'im-angular-demo'); },
-        set customColor(color){ mirror.setAssociationNamespaceAttribute('color', color, guid, 'im-angular-demo'); },
+        set customColor(color){ mirror.setAssociationNamespaceAttribute('color', color, GUID, 'im-angular-demo'); },
 
 
+        // created by wendy, not tested yet
+        get order(){ return mirror.getAssociationNamespaceAttribute('order', guid, 'im-angular-demo'); },
+        set order(newOrder){ mirror.setAssociationNamespaceAttribute('order', newOrder, guid, 'im-angular-demo'); },
 
         // These functions are all dealing with the private variable tags. This gives us a way to add,
         // delete, and list tags with an attribute. Internally these are represented as JSON and then these
@@ -95,6 +98,10 @@ angular.module('itemMirrorAngularDemoApp')
         return assocWrapper(guid);
       });
     }
+
+
+
+
 
     // Used to construct the very first ItemMirror object in the root
     // of the dropbox. In the future, this should be extended to use
@@ -180,6 +187,23 @@ angular.module('itemMirrorAngularDemoApp')
           }
         });
 
+        return deferred.promise;
+      },
+
+      // newly added to save new order
+
+       SaveNewOrder: function(associations){
+        var deferred =$q.defer();
+
+        mirror.SaveNewOrder(associations, function(error){
+          if (error) {
+            deferred.reject(error);
+            console.log(error);
+          }
+          else {
+            deferred.resolve();
+          }
+        });
         return deferred.promise;
       },
 

@@ -10,7 +10,7 @@
   <li ng-repeat="assoc in associations">{{ matchFirstLn(assoc.displayText) }}</li>
 </ul>-->
 
-    <div ui-sortable ng-model="associations" class="scroll">
+    <div ui-sortable="sortableOptions" ng-model="associations" class="scroll">
       <div ng-repeat="assoc in associations | filter:search.displayText"
            ng-click="select(assoc)">
         <div class="association"
