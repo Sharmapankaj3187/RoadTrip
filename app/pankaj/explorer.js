@@ -101,6 +101,7 @@ angular.module('itemMirrorAngularDemoApp')
         });
       };
 
+
       // default section for our editing panel
       function switchToAssocEditor() {
         $scope.editSection = 'assoc-editor';

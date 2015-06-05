@@ -156,7 +156,7 @@ angular.module('itemMirrorAngularDemoApp')
         console.log(error);
         if (error) { deferred.reject(error); }
         else {
-          mirrors.push(newMirror);
+          mirrors.unshift(newMirror);
           mirror = newMirror;
           updateAssociations();
           console.log('assocs updated');

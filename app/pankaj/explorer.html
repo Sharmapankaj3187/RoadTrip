@@ -1,17 +1,19 @@
 
 <div>
   <br/>
+  <br/>
+  <br/>
 </div>
 <div class="row">
 
   <!-- Association Listing Section -->
   <div class="col-md-4">
     <h2>{{mirror.displayName}}</h2>
-<!--
+
   <img ng-click="previous()" src="images/back.png" alternate="BACK" height="64" width="64"/>&nbsp;&nbsp;&nbsp;&nbsp; 
   <img ng-click="save()" src="images/save.png" alternate="SAVE" height="64" width="64"/>&nbsp;&nbsp;&nbsp;&nbsp;
   <img ng-click="refresh()" src="images/refresh.png" alternate="REFRESH" height="64" width="64"/>&nbsp;&nbsp;&nbsp;&nbsp;
-  <img ng-click="editSection = 'new-folder'" src="images/create.png" alternate="CREATE" height="64" width="64"/> -->
+  <img ng-click="editSection = 'new-folder'" src="images/create.png" alternate="CREATE" height="64" width="64"/>
 
   <!--<button ng-click="previous()" class="btn btn-default btn-lg">Back</button>-->
 
@@ -26,13 +28,13 @@
              ng-style="{ 'background-color': assoc.customColor }"
              ng-class="{'selected': assoc.selected}">
           <div class="row">
-            <div class="col-md-4">
-              <img src="images/folder1.png" ng-show="assoc.isGrouping" class="hvr-buzz"/>
-            
-              <span ng-show="assoc.isPhantom" class="blue glyphicon glyphicon-link"></span>
-              <span ng-show="!assoc.isGrouping" class="carrot glyphicon glyphicon-file"></span>
+            <div class="col-md-2">
+              <span ng-show="assoc.isGrouping" class="glyphicon glyphicon-folder-close"></span>
+
+              <span ng-show="assoc.isPhantom" class="glyphicon glyphicon-link"></span>
+              <span ng-show="!assoc.isGrouping" class="glyphicon glyphicon-file"></span>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
               <h3>{{ matchFirstLn(assoc.displayText) }}</h3>
               <a ng-show="assoc.isPhantom" ng-href="{{assoc.associatedItem}}">{{ assoc.associatedItem }}</a>
             </div>
@@ -42,11 +44,10 @@
           <div class="row buttons" ng-show="assoc.selected">
             <!-- Buttons -->
            <div class="col-md-6">
-              <button class="btn btn-success" ng-click="navigate(assoc.guid)" ng-show="assoc.isGrouping">Enter</button>
+              <button class="btn btn-default" ng-click="navigate(assoc.guid)" ng-show="assoc.isGrouping">Enter</button>
             </div>
             <div class="col-md-6">
-              <button class="btn btn-danger pull-right" ng-click="deleteAssoc(assoc.guid)">DELETE</button>
-             <!-- <img ng-click="deleteAssoc(assoc.guid)" class="pull-right" src="images/delete.png" height= "40" width= "40" border="2" alternate="DELETE"/>-->
+              <img ng-click="deleteAssoc(assoc.guid)" class="pull-right" src="images/delete.png" height="40" width="40" border="2" alternate="DELETE"/>
             </div>   
           </div>
         </div>
@@ -54,19 +55,13 @@
     </div>
   </div>
 
-  <div class="col-md-8" ng-switch on="editSection">
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Back</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Save</button>&nbsp;&nbsp;    
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Refresh</button>&nbsp;&nbsp;             
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Association Editor</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'new-phantom'">Create Phantom</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'new-folder'">Create Folder</button>&nbsp;&nbsp;
+  <div class="col-md-6" ng-switch on="editSection">
+    <button class="btn-default btn btn-lg"
+            ng-click="editSection = 'assoc-editor'">Association Editor</button>
+    <button class="btn-default btn btn-lg"
+            ng-click="editSection = 'new-phantom'">Create Phantom</button>
+    <button class="btn-default btn btn-lg"
+            ng-click="editSection = 'new-folder'">Create Folder</button>
 
   <!-- Association Editing Section -->
   <div ng-switch-when="assoc-editor" class="association-editor">
@@ -132,9 +127,9 @@
     </div>
   </div>
 
-  <!--<div class="col-md-2">
+  <div class="col-md-2">
     <button ng-click="save()" class="btn btn-lg btn-success">Save</button>
     <button ng-click="refresh()" class="btn btn-lg btn-success">Refresh</button>
-  </div>-->
+  </div>
 
   </div>
