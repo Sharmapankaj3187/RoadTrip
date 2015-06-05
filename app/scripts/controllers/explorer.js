@@ -14,6 +14,7 @@ angular.module('itemMirrorAngularDemoApp')
   	init.then(function() {
       $scope.mirror = itemMirror;
       $scope.associations = itemMirror.associations;
+      $scope.associations.sort(_localItemCompare);
       $scope.selectedAssoc = null;
 
       // This needs to be called after the service updates the associations.
@@ -21,13 +22,46 @@ angular.module('itemMirrorAngularDemoApp')
       // updates don't get propogated to the front end.
       function assocScopeUpdate() {
         $scope.associations = itemMirror.associations;
+        $scope.associations.sort(_localItemCompare);
         $scope.selectedAssoc = null;
        }
+
+      function _localItemCompare(a,b){
+      if (a.order>b.order) return 1;
+      else if (a.order<b.order) return -1;
+      else return 0;
+    }
 
       $scope.deleteAssoc = function(guid) {
         itemMirror.deleteAssociation(guid).
         then(assocScopeUpdate);
       };
+
+      // inserted for saving the orders
+  
+  $scope.sortableOptions = {
+    
+    
+    stop: function(e, ui) {
+      //this callback has the changed model
+    var reorderLog = $scope.associations.map(function(assoc){
+      
+    return assoc.localItem
+
+     }).join(', ');
+
+      var i=1;
+      $scope.associations.forEach(function (assoc){
+        assoc.order =i;
+        i = i + 1;
+      });
+
+      $scope.save();
+
+     // $scope.sortingLog.push('Stop: ' + logEntry);
+    }
+  };
+//});
 
       $scope.navigate = function(guid) {
         itemMirror.navigateMirror(guid).
