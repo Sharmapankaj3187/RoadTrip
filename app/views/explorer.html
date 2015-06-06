@@ -27,10 +27,9 @@
              ng-class="{'selected': assoc.selected}">
           <div class="row">
             <div class="col-md-4">
-              <img src="images/folder1.png" ng-show="assoc.isGrouping" class="hvr-buzz"/>
-            
-              <span ng-show="assoc.isPhantom" class="blue glyphicon glyphicon-link"></span>
-              <span ng-show="!assoc.isGrouping" class="carrot glyphicon glyphicon-file"></span>
+              <img src="images/folder1.png" ng-show="assoc.isGrouping" class="hvr-grow"/>
+              <span ng-show="assoc.isPhantom" class="blue glyphicon glyphicon-link" class="hvr-grow"></span>
+              <span ng-show="!assoc.isGrouping" class="carrot glyphicon glyphicon-file" class="hvr-grow"></span>
             </div>
             <div class="col-md-8">
               <h3>{{ matchFirstLn(assoc.displayText) }}</h3>
