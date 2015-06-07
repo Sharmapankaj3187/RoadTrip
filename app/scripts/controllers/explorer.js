@@ -11,6 +11,138 @@ angular.module('itemMirrorAngularDemoApp')
   .controller('ExplorerCtrl', function ($scope, itemMirror) {
   	// starts everything up after dropbox loads
   	var init = itemMirror.initialize;
+
+    /*Search code starts*/
+    /*$scope.clickFun = function ($event) {
+              
+              if(event.target.getAttribute('data-ctorig')) {
+                var myClickedLink = event.target.getAttribute('data-ctorig');
+              } else if($(event.target).parent().attr('data-ctorig')) {
+                var myClickedLink = $(event.target).parent().attr('data-ctorig');
+              }
+
+              if(event){
+                event.stopPropagation();
+                event.preventDefault();
+              }
+              //check for duplicate entries
+              var keepGoing = true;
+              
+              for(var i=0 ; i <= $scope.allOptions.length; i++) {
+                if(keepGoing && myClickedLink != null) {
+                  if($scope.allOptions[i] == myClickedLink){
+                  alert(myClickedLink+" exists in your list.");
+                  keepGoing = false;
+                  }
+                  else
+                  {
+                  $scope.arrPush(myClickedLink);
+                  alert(myClickedLink+" added to your list.");
+                  keepGoing = false;
+                  }
+              }
+            }
+            };
+            */
+
+
+            /* This is the new code */
+            $scope.clickFun = function ($event) {
+          if(event.target.getAttribute('data-ctorig')) {
+            var myClickedLink = event.target.getAttribute('data-ctorig');
+          } else if($(event.target).parent().attr('data-ctorig')) {
+            var myClickedLink = $(event.target).parent().attr('data-ctorig');
+          }
+
+          if(event){
+            event.stopPropagation();
+            event.preventDefault();
+          }
+          
+          //check for duplicate entries
+          var keepGoing = true;
+          var linkExists;
+          
+              if(keepGoing && myClickedLink != null) {
+              for(var i=0 ; i <= $scope.allOptions.length; i++) {
+              if($scope.allOptions[i] == myClickedLink){
+              alert(myClickedLink+" exists in your list.");
+              keepGoing = false;
+              linkExists = "true";
+              }
+            }
+              if(linkExists != "true")
+              {
+              $scope.arrPush(myClickedLink);
+              alert(myClickedLink+" added to your list.");
+              keepGoing = false;
+              }
+          }
+        };
+
+
+            //aditi
+    $scope.allOptions = [];
+    $scope.arrPush = function(myClickedLink){
+      //check if the myClickedLink already exists in your array. Because you don't want to allow for duplicates
+      $scope.allOptions.push(myClickedLink);
+    }
+
+    $scope.arrFun = function ($event) {
+
+        var lb = "• "; // used for console.log()
+        //var myApp = angular.module("myApp", []);
+
+      $scope.title = 'AngularJS Checkboxes Bound to Target Array with Initial Selections Checked';
+      $scope.content = '';
+
+      $scope.isChecked = function(id){
+          var match = false;
+          for(var i=0 ; i < $scope.data.length; i++) {
+            if($scope.data[i].id == id){
+              match = true;
+            }
+          }
+          return match;
+      };
+    }    
+    //working aditi
+    $scope.data = [];
+
+    //test ashay
+    //$scope.data = {};
+
+      $scope.sync = function(bool, item, displayText){
+        
+        var assocItem = {};
+        assocItem.link = item;
+        assocItem.displayText = displayText;
+        if(bool){
+          // add item
+          $scope.data.push(assocItem);
+        } else {
+          // remove item
+          for(var i=0 ; i < $scope.data.length; i++) {
+            if($scope.data[i].id == item.id){
+              $scope.data.splice(i,1);
+            }
+          }      
+        }
+      };
+
+
+    $scope.saveLinks = function($event){
+      
+      for(var i=0 ; i <= $scope.data.length; i++) {
+            
+            $scope.phantomRequest.displayText = $scope.data[i].displayText;
+            $scope.phantomRequest.itemURI = $scope.data[i].link;
+            $scope.createPhantom();
+            }
+          } 
+
+      /*Search code ends*/
+
   	init.then(function() {
       $scope.mirror = itemMirror;
       $scope.associations = itemMirror.associations;
@@ -24,13 +156,13 @@ angular.module('itemMirrorAngularDemoApp')
         $scope.associations = itemMirror.associations;
         $scope.associations.sort(_localItemCompare);
         $scope.selectedAssoc = null;
-       }
+       };
 
       function _localItemCompare(a,b){
       if (a.order>b.order) return 1;
       else if (a.order<b.order) return -1;
       else return 0;
-    }
+    };
 
       $scope.deleteAssoc = function(guid) {
         itemMirror.deleteAssociation(guid).

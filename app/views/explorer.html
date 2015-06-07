@@ -55,17 +55,41 @@
 
   <div class="col-md-8" ng-switch on="editSection">
     <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Back</button>&nbsp;&nbsp;
+            ng-click="previous()">Back</button>&nbsp;&nbsp;
     <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Save</button>&nbsp;&nbsp;    
+            ng-click="save()">Save</button>&nbsp;&nbsp;    
     <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Refresh</button>&nbsp;&nbsp;             
+            ng-click="refresh()">Refresh</button>&nbsp;&nbsp;             
     <button class="hvr-grow btn-success btn-lg"
             ng-click="editSection = 'assoc-editor'">Association Editor</button>&nbsp;&nbsp;
+    <button class="hvr-grow btn-success btn-lg"
+            ng-click="editSection = 'search'">Search</button>&nbsp;&nbsp;
     <button class="hvr-grow btn-success btn-lg"
             ng-click="editSection = 'new-phantom'">Create Phantom</button>&nbsp;&nbsp;
     <button class="hvr-grow btn-success btn-lg"
             ng-click="editSection = 'new-folder'">Create Folder</button>&nbsp;&nbsp;
+
+
+ <!--This is Ashay code --> 
+  <div ng-click="clickFun($event)" class="gs-webResult">
+     <gcse:search enableAutoComplete="true"></gcse:search>
+  </div>
+  <div class="col-md-4">
+    <div id="checkbox">
+      <div ng-init="arrFun($event)">
+        <h3>Your Links</h3>            
+        <div class="row">
+          <p ng-repeat="item in allOptions track by $index" id="{{item.id}}">{{item.id}}
+            <input class ='col-md-1' type="checkbox" ng-change="sync(bool, item, displayText)" ng-model="bool" ng-checked="isChecked(item.id)"> {{item}} 
+            <textarea ng-model="displayText" ></textarea>
+          </p>
+        </div>
+        <div >
+          <button ng-click="saveLinks()" class="btn btn-success">Add Links</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Association Editing Section -->
   <div ng-switch-when="assoc-editor" class="association-editor">
@@ -114,6 +138,7 @@
       </form>
       <button ng-click="createPhantom()" class="btn btn-lg btn-default">Create</button>
     </div>
+
 
   <!-- Folder Creation Section -->
   <div ng-switch-when="new-folder" class="folder">
