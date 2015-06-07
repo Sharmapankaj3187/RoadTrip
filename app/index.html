@@ -15,6 +15,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/bubblegum.css">
     <!-- endbuild -->
 
 
@@ -38,8 +39,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="#header">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#help">Help</a></li>
+            <!--<li><a href="#about">About</a></li>-->
+            <li class="active"><a ng-href="#/about">About</a></li>
           </ul>
         </div>
       <div align="left" style="height: 105px;">
@@ -52,7 +53,6 @@
 
       <div ng-view=""></div>
     </div>
-
   </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -64,6 +64,17 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
+
+       (function() {
+           var cx = '017160527669106455950:xwpxco33bqq';
+           var gcse = document.createElement('script');
+           gcse.type = 'text/javascript';
+           gcse.async = true;
+           gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+               '//cse.google.com/cse.js?cx=' + cx;
+           var s = document.getElementsByTagName('script')[0];
+           s.parentNode.insertBefore(gcse, s);
+         })();
     </script>
 
 
