@@ -159,11 +159,21 @@ angular.module('itemMirrorAngularDemoApp')
         $scope.selectedAssoc = null;
        };
 
+<<<<<<< HEAD
+      function _localItemCompare(a, b) {
+            if (a.order == undefined) return -1;
+            if (b.order == undefined) return 1;
+
+            var ret = a.order - b.order;
+            return ret;
+        }
+=======
       function _localItemCompare(a,b){
       if (a.order>b.order) return 1;
       else if (a.order<b.order) return -1;
       else return 0;
     };
+>>>>>>> 982fb49b6162b10ed2e96e9f2a8ceaf8cf4b036e
 
       
       $scope.deleteAssoc = function(guid) {
@@ -186,6 +196,11 @@ angular.module('itemMirrorAngularDemoApp')
     return assoc.localItem
 
      }).join(', ');
+     $scope.saveWithOrder();
+            }
+        };
+
+      $scope.saveWithOrder = function (guid) {
 
       var i=1;
       $scope.associations.forEach(function (assoc){
@@ -196,8 +211,7 @@ angular.module('itemMirrorAngularDemoApp')
       $scope.save();
 
      // $scope.sortingLog.push('Stop: ' + logEntry);
-    }
-  };
+    };
 //});
 
       $scope.navigate = function(guid) {
@@ -269,6 +283,7 @@ angular.module('itemMirrorAngularDemoApp')
           switchToAssocEditor();
           assocScopeUpdate();
           resetFolderRequest();
+          $scope.saveWithOrder();
         });
       };
 
