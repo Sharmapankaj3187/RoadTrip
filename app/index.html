@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-  <div>
+  <div id="maincontainer1">
     <div class="container" id="maincontainer">
       <!--<div class="navbar-header">
         <button type="button"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -36,23 +36,25 @@
           <span class="icon-bar"></span>
         </button>
          </div>-->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background: #ecf0f1;">
           <ul class="nav navbar-nav">
             <li><a href="#header">Home</a></li>
             <!--<li><a href="#about">About</a></li>-->
             <li class="active"><a ng-href="#/about">About</a></li>
           </ul>
         </div>
-      <div align="left" style="height: 105px;">
-        <img src="images/road-trip-sign.jpg" height="100px" width="415px" align="right" border="0"/>
+      <div align="left" style="height: 175px;">
+        <img src="images/logo3.jpg" height="175px" width="100%" align="right" border="0"/>
       </br>
-        <p>RoadTrip- Team Sparta</p>
-      </br>
-    </br>
+        <!--<p>RoadTrip- Team Sparta</p>-->
       </div>
 
-      <div ng-view=""></div>
+      <div ng-view="" style="background: #ecf0f1;"></div>
     </div>
+      
+
+
+       
   </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

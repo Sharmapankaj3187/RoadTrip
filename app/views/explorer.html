@@ -1,6 +1,6 @@
 
 <div>
-  <br/>
+</br>
 </div>
 <div class="row">
 
@@ -23,8 +23,8 @@
       <div ng-repeat="assoc in associations | filter:search.displayText"
            ng-click="select(assoc)">
         <div class="association"
-             ng-style="{ 'background-color': assoc.customColor }"
-             ng-class="{'selected': assoc.selected}">
+             ng-style="{ 'background-color': assoc.customColor; }"
+             ng-class="{'selected': assoc.selected}" style="background: #fff;">
           <div class="row">
             <div class="col-md-4">
               <img src="images/folder1.png" ng-show="assoc.isGrouping" class="hvr-grow"/>
@@ -41,7 +41,7 @@
           <div class="row buttons" ng-show="assoc.selected">
             <!-- Buttons -->
            <div class="col-md-6">
-              <button class="btn btn-success" ng-click="navigate(assoc.guid)" ng-show="assoc.isGrouping">Enter</button>
+              <button class="btn btn-success" ng-click="navigate(assoc.guid)" ng-show="assoc.isGrouping">EXPLORE</button>
             </div>
             <div class="col-md-6">
               <button class="btn btn-danger pull-right" ng-click="deleteAssoc(assoc.guid)">DELETE</button>
@@ -53,24 +53,33 @@
     </div>
   </div>
 
-  <div class="col-md-8" ng-switch on="editSection">
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="previous()">Back</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="save()">Save</button>&nbsp;&nbsp;    
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="refresh()">Refresh</button>&nbsp;&nbsp;             
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'assoc-editor'">Association Editor</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'search'">Search</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'new-phantom'">Create Phantom</button>&nbsp;&nbsp;
-    <button class="hvr-grow btn-success btn-lg"
-            ng-click="editSection = 'new-folder'">Create Folder</button>&nbsp;&nbsp;
+  
+<div class="col-md-8" ng-switch on="editSection">
+   <table>
+     <tr>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="previous()">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="save()">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="refresh()">Refresh</button>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="editSection = 'assoc-editor'">Change Folder Name</button>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="editSection = 'new-phantom'">Add Note</button>&nbsp;&nbsp;&nbsp;&nbsp;
+       </td>
+       <td>&nbsp;&nbsp;<button class="hvr-grow btn-success btn-lg"
+           ng-click="editSection = 'new-folder'">Create Folder</button>&nbsp;&nbsp;&nbsp;&nbsp;
+         </td>
+       </tr>
+     </table>
+   </br>
 
-
- <!--This is Ashay code --> 
+   <!--This is Ashay code --> 
   <div ng-click="clickFun($event)" class="gs-webResult">
      <gcse:search enableAutoComplete="true"></gcse:search>
   </div>
@@ -78,68 +87,78 @@
     <div id="checkbox">
       <div ng-init="arrFun($event)">
         <h3>Your Links</h3>            
-        <div class="row">
-          <p ng-repeat="item in allOptions track by $index" id="{{item.id}}">{{item.id}}
-            <input class ='col-md-1' type="checkbox" ng-change="sync(bool, item, displayText)" ng-model="bool" ng-checked="isChecked(item.id)"> {{item}} 
-            <textarea ng-model="displayText" ></textarea>
+        <div class="row" id="addPad">
+          <p ng-repeat="item in allOptions track by $index" id="{{item.id}}" style="font-size: 20px;">{{item.id}}
+            <input class ='checkbox col-md-1' type="checkbox" ng-change="sync(bool, item, displayText)" ng-model="bool" ng-checked="isChecked(item.id)">{{item}}
+            
+          <!-- Start Ashay -->  
+            <textarea ng-model="displayText" placeholder="Enter the name of the note"></textarea>
+
+          <!-- End Ashay -->
           </p>
         </div>
-        <div >
-          <button ng-click="saveLinks()" class="btn btn-success">Add Links</button>
+         </br>
+        <div class="row" id="addPad">
+        </br>
+          &nbsp;&nbsp;<button ng-click="saveLinks()" class="btn-lg btn-success">Add Links</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Association Editing Section -->
-  <div ng-switch-when="assoc-editor" class="association-editor">
-    <p class="lead" ng-hide="selectedAssoc">
-      Select an association to the left in order to edit it!
-    </p>
-    <div ng-if="selectedAssoc">
-      <h2>Editor</h2>
 
-      <h3>{{selectedAssoc.localItem}}</h3>
+  <div class="row">
+   <!-- Association Editing Section -->
+   <div ng-switch-when="assoc-editor" class="association-editor">
+     <div ng-if="selectedAssoc">
+       <h2>Editor</h2>
 
-      <textarea ng-model="selectedAssoc.displayText"></textarea>
+       <h3>{{selectedAssoc.localItem}}</h3>
 
-      <h2>Tags</h2>
-        <input type="text" ng-model="tagValue">
-        <button ng-click="selectedAssoc.addTag(tagValue)"><span class="glyphicon glyphicon-plus"></span></button>
-      <h3>Current Tags</h3>
-      <div class="tag" ng-repeat="tag in selectedAssoc.listTags()">{{tag}}
-        <button ng-click="selectedAssoc.deleteTag(tag)">
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
-      </div>
+       <textarea ng-model="selectedAssoc.displayText"></textarea>
 
-      <!-- Creates a binding to the custom namespace attribute -->
-      <input type="color"
-             ng-model="selectedAssoc.customColor"
-             ng-model-options="{ getterSetter: true }">
+       <h2>Tags</h2>
+         <input type="text" ng-model="tagValue">
+         <button ng-click="selectedAssoc.addTag(tagValue)"><span class="glyphicon glyphicon-plus"></span></button>
+       <h3>Current Tags</h3>
+       <div class="tag" ng-repeat="tag in selectedAssoc.listTags()">{{tag}}
+         <button ng-click="selectedAssoc.deleteTag(tag)">
+           <span class="glyphicon glyphicon-remove"></span>
+         </button>
+       </div>
 
-      <!-- This button resets the color by setting the value to null -->
-      <button ng-click="selectedAssoc.customColor = null">Reset Color</button>
-    </div>
+       <!-- Creates a binding to the custom namespace attribute -->
+       <input type="color"
+              ng-model="selectedAssoc.customColor"
+              ng-model-options="{ getterSetter: true }">
 
-  </div>
+       <!-- This button resets the color by setting the value to null -->
+       <button ng-click="selectedAssoc.customColor = null">Reset Color</button>
+     </div>
+     </div>
+   </div>
 
+  
+
+  <div class="row">
   <!-- Phantom Creation Section -->
   <div ng-switch-when="new-phantom" class="phantom">
     <h2>New Phantom</h2>
       <form>
         <label>Display Text</label>
-        <br/>
+        </br>
         <textarea ng-model="phantomRequest.displayText"></textarea>
-        <br/>
+        </br>
         <label>URL</label>
-        <br/>
+        </br>
         <input ng-model="phantomRequest.itemURI" type="text">
       </form>
+      </br>
       <button ng-click="createPhantom()" class="btn btn-lg btn-default">Create</button>
     </div>
+  </div>
 
-
+  <div class="row">
   <!-- Folder Creation Section -->
   <div ng-switch-when="new-folder" class="folder">
     <h2>New Folder</h2>
@@ -155,6 +174,11 @@
       <button ng-click="createFolder()" class="btn btn-lg btn-default">Create</button>
     </div>
   </div>
+</div>
+
+
+  
+
 
   <!--<div class="col-md-2">
     <button ng-click="save()" class="btn btn-lg btn-success">Save</button>

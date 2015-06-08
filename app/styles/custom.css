@@ -4,7 +4,20 @@
 }
 
 #maincontainer{
-	 width:1300px;"  
+	 width:1300px;
+}
+#maincontainer1{
+  
+   background-position: center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+   -o-background-size: cover;
+
+   background-attachment: scroll;
+   background-image: url("../images/bg4.jpg");
+   background-repeat: no-repeat; 
+
 }
 
 /*#maincontainer.img{
@@ -55,25 +68,25 @@
 
 @-webkit-keyframes hvr-buzz {
   50% {
-    -webkit-transform: translateX(3px) rotate(2deg);
-    transform: translateX(3px) rotate(2deg);
+    -webkit-transform: translateX(2px) rotate(2deg);
+    transform: translateX(2px) rotate(2deg);
   }
 
   100% {
-    -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
+    -webkit-transform: translateX(-2px) rotate(-2deg);
+    transform: translateX(-2px) rotate(-2deg);
   }
 }
 
 @keyframes hvr-buzz {
   50% {
-    -webkit-transform: translateX(3px) rotate(2deg);
-    transform: translateX(3px) rotate(2deg);
+    -webkit-transform: translateX(2px) rotate(2deg);
+    transform: translateX(2px) rotate(2deg);
   }
 
   100% {
-    -webkit-transform: translateX(-3px) rotate(-2deg);
-    transform: translateX(-3px) rotate(-2deg);
+    -webkit-transform: translateX(-2px) rotate(-2deg);
+    transform: translateX(-2px) rotate(-2deg);
   }
 }
 
@@ -115,4 +128,18 @@
 }
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+textarea{
+  color:#000000;
+  width: 800px;
+  height: 75px;
+  overflow: hidden;
+}
+
+input.checkbox {
+  float:left;
+}
+
+#addPad{
+  padding: 10px;
 }

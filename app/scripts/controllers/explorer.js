@@ -8,7 +8,7 @@
  * Controller of the itemMirrorAngularDemoApp
  */
 angular.module('itemMirrorAngularDemoApp')
-  .controller('ExplorerCtrl', function ($scope, itemMirror) {
+  .controller('ExplorerCtrl', function ($scope, $rootScope, itemMirror , $window) {
   	// starts everything up after dropbox loads
   	var init = itemMirror.initialize;
 
@@ -99,6 +99,7 @@ angular.module('itemMirrorAngularDemoApp')
       $scope.isChecked = function(id){
           var match = false;
           for(var i=0 ; i < $scope.data.length; i++) {
+            debugger;
             if($scope.data[i].id == id){
               match = true;
             }
@@ -164,9 +165,13 @@ angular.module('itemMirrorAngularDemoApp')
       else return 0;
     };
 
+      
       $scope.deleteAssoc = function(guid) {
+        var delFlag = confirm("Are you sure you want to DELETE");
+        if(delFlag){
         itemMirror.deleteAssociation(guid).
         then(assocScopeUpdate);
+        }
       };
 
       // inserted for saving the orders
